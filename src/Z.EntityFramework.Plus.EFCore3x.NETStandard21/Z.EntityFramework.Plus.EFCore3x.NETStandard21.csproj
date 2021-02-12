@@ -22,12 +22,12 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DefineConstants>TRACE;RELEASE;NETSTANDARD2_0;EFCORE NET45 FULL EFCORE_3X</DefineConstants>
+    <DefineConstants>TRACE2_0;EFCORE NET45 FULL EFCORE_3X;EFCORE_5X;</DefineConstants>
     <DocumentationFile>bin\Release\netstandard2.1\Z.EntityFramework.Plus.EFCore.xml</DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DefineConstants>TRACE;NETSTANDARD2_0;EFCORE NET45 FULL;NETSTANDARD2_0;EFCORE_3X</DefineConstants>
+    <DefineConstants>TRACE2_0;EFCORE NET45 FULL2_0;FULL;EFCORE_3X;EFCORE_5X;;</DefineConstants>
   </PropertyGroup>
 
   <Import Project="..\shared\Z.EF.Plus._Core.Shared\Z.EF.Plus._Core.Shared.projitems" Label="Shared" />
@@ -55,11 +55,11 @@
   <Import Project="..\shared\Z.EF.Plus.QueryIncludeOptimized.Shared\Z.EF.Plus.QueryIncludeOptimized.Shared.projitems" Label="Shared" />
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.CSharp" Version="4.6.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="3.0.0" />
-    <PackageReference Include="System.Reflection.Emit" Version="4.6.0" />
-    <PackageReference Include="System.Reflection.TypeExtensions" Version="4.6.0" />
-    <PackageReference Include="Z.EntityFramework.Extensions.EFCore" Version="3.0.52" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="5.0.0" />
+    <PackageReference Include="System.Reflection.Emit" Version="4.7.0" />
+    <PackageReference Include="System.Reflection.TypeExtensions" Version="4.7.0" />
+    <PackageReference Include="Z.EntityFramework.Extensions.EFCore" Version="5.1.15" />
     <PackageReference Include="Z.Expressions.Eval" Version="3.1.6" />
   </ItemGroup>
 
