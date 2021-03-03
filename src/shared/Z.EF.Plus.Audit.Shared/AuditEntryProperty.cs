@@ -146,12 +146,12 @@ namespace Z.EntityFramework.Plus
         /// <summary>Gets or sets the identifier of the audit entry property.</summary>
         /// <value>The identifier of the audit entry property.</value>
         [Column(Order = 0)]
-        public int AuditEntryPropertyID { get; set; }
+        public Guid AuditEntryPropertyID { get; set; }
 
         /// <summary>Gets or sets the identifier of the audit entry.</summary>
         /// <value>The identifier of the audit entry.</value>
         [Column(Order = 1)]
-        public int AuditEntryID { get; set; }
+        public Guid AuditEntryID { get; set; }
 
         /// <summary>Gets or sets the parent.</summary>
         /// <value>The parent.</value>
