@@ -139,7 +139,8 @@ new AuditEntryProperty();
 
                 if (property.Metadata.IsKey() || entry.Parent.CurrentOrDefaultConfiguration.IsAuditedProperty(entry.Entry, propertyEntry.Name))
                 {
-                    if (!audit.Configuration.IgnorePropertyUnchanged || property.Metadata.IsKey() || property.IsModified)
+                    if (!audit.Configuration.IgnorePropertyUnchanged || property.Metadata.IsKey() 
+                       || (property.IsModified && !object.Equals(property.OriginalValue, property.CurrentValue)))
                     {
                         var auditEntryProperty = entry.Parent.Configuration.AuditEntryPropertyFactory != null ?
                             entry.Parent.Configuration.AuditEntryPropertyFactory(new AuditEntryPropertyArgs(entry, objectStateEntry, propertyEntry.Name, property.OriginalValue, property.CurrentValue)) :
