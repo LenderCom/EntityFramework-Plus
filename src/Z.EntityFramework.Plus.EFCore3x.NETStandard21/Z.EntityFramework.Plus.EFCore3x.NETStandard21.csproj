@@ -56,10 +56,11 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.CSharp" Version="4.6.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="3.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.21" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="3.1.21" />
     <PackageReference Include="System.Reflection.Emit" Version="4.6.0" />
     <PackageReference Include="System.Reflection.TypeExtensions" Version="4.6.0" />
-    <PackageReference Include="Z.EntityFramework.Extensions.EFCore" Version="3.0.52" />
+    <PackageReference Include="Z.EntityFramework.Extensions.EFCore" Version="3.1.5" />
     <PackageReference Include="Z.Expressions.Eval" Version="3.1.6" />
   </ItemGroup>
 
