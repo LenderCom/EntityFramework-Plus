@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <AssemblyName>Z.EntityFramework.Plus.EFCore</AssemblyName>
     <RootNamespace>Z.EntityFramework.Plus.EFCore.NETStandard21</RootNamespace>
     <SignAssembly>false</SignAssembly>
