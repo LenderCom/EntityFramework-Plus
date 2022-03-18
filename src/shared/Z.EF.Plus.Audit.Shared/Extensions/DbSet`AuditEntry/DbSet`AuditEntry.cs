@@ -29,15 +29,39 @@ namespace Z.EntityFramework.Plus
 
         public static IQueryable<TAuditEntry> Where<TAuditEntry, T>(this DbSet<TAuditEntry> set, T entry) where TAuditEntry : AuditEntry where T : class
         {
+            return set.Where<TAuditEntry, T>(AuditManager.DefaultConfiguration, entry);
+        }
+
+        public static IQueryable<AuditEntry> Where<T>(this DbSet<AuditEntry> set, params object[] keyValues) where T : class
+        {
+            return set.Where<AuditEntry, T>(keyValues);
+        }
+
+        public static IQueryable<TAuditEntry> Where<TAuditEntry, T>(this DbSet<TAuditEntry> set, params object[] keyValues) where TAuditEntry : AuditEntry where T : class
+        {
+            return set.Where<TAuditEntry, T>(AuditManager.DefaultConfiguration, keyValues);          
+        }
+
+        public static IQueryable<AuditEntry> Where<T>(this DbSet<AuditEntry> set, AuditConfiguration auditConfiguration, T entry) where T : class
+        {
+            return set.Where<AuditEntry, T>(auditConfiguration, entry);
+        }
+
+        public static IQueryable<TAuditEntry> Where<TAuditEntry, T>(this DbSet<TAuditEntry> set, AuditConfiguration auditConfiguration, T entry) where TAuditEntry : AuditEntry where T : class
+        {
             var context = set.GetDbContext();
             var keyNames = context.GetKeyNames<T>();
+
+            var name = auditConfiguration.EntityNameFactory != null ?
+                auditConfiguration.EntityNameFactory(typeof(T)) :
+                typeof(T).Name;
 
             if (entry == null)
             {
                 return set.Where(x => false);
             }
 
-            var query = set.Where(x => x.EntityTypeName == typeof(T).Name);
+            var query = set.Where(x => x.EntityTypeName == name);
 
             foreach (var keyName in keyNames)
             {
@@ -53,17 +77,21 @@ namespace Z.EntityFramework.Plus
             return query;
         }
 
-        public static IQueryable<AuditEntry> Where<T>(this DbSet<AuditEntry> set, params object[] keyValues) where T : class
+        public static IQueryable<AuditEntry> Where<T>(this DbSet<AuditEntry> set, AuditConfiguration auditConfiguration, params object[] keyValues) where T : class
         {
-            return set.Where<AuditEntry, T>(keyValues);
+            return set.Where<AuditEntry, T>(auditConfiguration, keyValues);
         }
 
-        public static IQueryable<TAuditEntry> Where<TAuditEntry, T>(this DbSet<TAuditEntry> set, params object[] keyValues) where TAuditEntry : AuditEntry where T : class
+        public static IQueryable<TAuditEntry> Where<TAuditEntry, T>(this DbSet<TAuditEntry> set, AuditConfiguration auditConfiguration, params object[] keyValues) where TAuditEntry : AuditEntry where T : class
         {
             var context = set.GetDbContext();
             var keyNames = context.GetKeyNames<T>();
 
-            var query = set.Where(x => x.EntityTypeName == typeof(T).Name);
+            var name = auditConfiguration.EntityNameFactory != null ?
+                auditConfiguration.EntityNameFactory(typeof(T)) :
+                typeof(T).Name;
+
+            var query = set.Where(x => x.EntityTypeName == name);
 
             if (keyValues == null)
             {

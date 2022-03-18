@@ -30,14 +30,18 @@ namespace Z.EntityFramework.Plus
 #if EF5 || EF6
         public static void AuditEntityModified(Audit audit, ObjectStateEntry objectStateEntry, AuditEntryState state)
 #elif EFCORE
-        public static void AuditEntityModified(Audit audit, EntityEntry objectStateEntry, AuditEntryState state)
+        public static void AuditEntityModified(Audit audit, EntityEntry objectStateEntry, AuditEntryState state, DbContext context)
 #endif
         {
             var entry = audit.Configuration.AuditEntryFactory != null ?
 audit.Configuration.AuditEntryFactory(new AuditEntryFactoryArgs(audit, objectStateEntry, state)) :
 new AuditEntry();
 
+#if EF5 || EF6
             entry.Build(audit, objectStateEntry);
+#elif EFCORE
+            entry.Build(audit, objectStateEntry, context);
+#endif
             entry.State = state;
 
 #if EF5 || EF6
@@ -150,7 +154,7 @@ new AuditEntryProperty();
                         auditEntryProperty.IsKey = property.Metadata.IsKey();
                         entry.Properties.Add(auditEntryProperty);
 
-                        if (property.IsModified)
+                        if (!property.Metadata.IsKey())
                         {
                             hasModified = true;
                         }
