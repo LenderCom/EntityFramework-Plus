@@ -59,12 +59,12 @@
   <Import Project="..\shared\Z.EF.Plus.QueryHook\Z.EF.Plus.QueryHook.projitems" Label="Shared" />
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.CSharp" Version="4.6.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="3.0.0" />
-    <PackageReference Include="System.Reflection.Emit" Version="4.6.0" />
-    <PackageReference Include="System.Reflection.TypeExtensions" Version="4.6.0" />
-    <PackageReference Include="Z.EntityFramework.Extensions.EFCore" Version="3.13.0" />
-    <PackageReference Include="Z.Expressions.Eval" Version="4.0.62" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="6.0.3" />
+    <PackageReference Include="System.Reflection.Emit" Version="4.7.0" />
+    <PackageReference Include="System.Reflection.TypeExtensions" Version="4.7.0" />
+    <PackageReference Include="Z.EntityFramework.Extensions.EFCore" Version="6.13.15" />
+    <PackageReference Include="Z.Expressions.Eval" Version="4.0.77" />
   </ItemGroup>
 
 </Project>
