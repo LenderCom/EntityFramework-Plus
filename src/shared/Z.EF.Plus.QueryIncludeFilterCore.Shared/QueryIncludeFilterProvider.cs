@@ -13,6 +13,7 @@ using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.EntityFrameworkCore.Query;
 using Microsoft.EntityFrameworkCore.Query.Internal;
@@ -182,7 +183,7 @@ namespace Z.EntityFramework.Plus
                 {
                     // MODIFY query if necessary 
 
-                    var keyNames = context.Model.FindEntityType(typeof(TResult).DisplayName(true))
+                    var keyNames = context.Model.FindEntityType(typeof(TResult).ShortDisplayName())
                         .GetKeys().ToList()[0]
                         .Properties.Select(x => x.Name).ToArray();
 
@@ -205,7 +206,7 @@ namespace Z.EntityFramework.Plus
 				{
 					// MODIFY query if necessary 
 
-					var keyNames = context.Model.FindEntityType(typeof(TResult).DisplayName(true))
+					var keyNames = context.Model.FindEntityType(typeof(TResult).ShortDisplayName())
                         .GetKeys().ToList()[0]
                         .Properties.Select(x => x.Name).ToArray();
 

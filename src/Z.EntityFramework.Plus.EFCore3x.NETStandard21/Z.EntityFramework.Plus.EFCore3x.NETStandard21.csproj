@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <AssemblyName>Z.EntityFramework.Plus.EFCore</AssemblyName>
     <RootNamespace>Z.EntityFramework.Plus.EFCore.NETStandard21</RootNamespace>
     <SignAssembly>false</SignAssembly>
@@ -55,13 +55,13 @@
   <Import Project="..\shared\Z.EF.Plus.QueryIncludeOptimized.Shared\Z.EF.Plus.QueryIncludeOptimized.Shared.projitems" Label="Shared" />
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.CSharp" Version="4.6.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.21" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="3.1.21" />
-    <PackageReference Include="System.Reflection.Emit" Version="4.6.0" />
-    <PackageReference Include="System.Reflection.TypeExtensions" Version="4.6.0" />
-    <PackageReference Include="Z.EntityFramework.Extensions.EFCore" Version="3.1.5" />
-    <PackageReference Include="Z.Expressions.Eval" Version="3.1.6" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="6.0.3" />
+    <PackageReference Include="System.Reflection.Emit" Version="4.7.0" />
+    <PackageReference Include="System.Reflection.TypeExtensions" Version="4.7.0" />
+    <PackageReference Include="Z.EntityFramework.Extensions.EFCore" Version="6.13.16" />
+    <PackageReference Include="Z.Expressions.Eval" Version="4.0.78" />
   </ItemGroup>
 
 </Project>

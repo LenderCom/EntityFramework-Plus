@@ -12,6 +12,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 
 #if EF5
 using System.Data.Metadata.Edm;
@@ -132,7 +133,7 @@ namespace Z.EntityFramework.Plus
                 context = OriginalQueryable.GetDbContext();
             }
 
-            var keyNames = context.Model.FindEntityType(typeof(T).DisplayName(true))
+            var keyNames = context.Model.FindEntityType(typeof(T).ShortDisplayName())
                 .GetKeys().ToList()[0]
                 .Properties.Select(x => x.Name).ToArray();
 #endif
