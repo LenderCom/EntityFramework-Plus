@@ -10,7 +10,6 @@
     <license type="expression">MIT</license>
     <projectUrl>$packageprojecturl$</projectUrl>
     <iconUrl>http://icon_url_here_or_delete_this_line/</iconUrl>
-    <description>$description$</description>
     <releaseNotes>$packagereleasenotes$</releaseNotes>
     <copyright>Copyright 2022</copyright>
     <dependencies>
