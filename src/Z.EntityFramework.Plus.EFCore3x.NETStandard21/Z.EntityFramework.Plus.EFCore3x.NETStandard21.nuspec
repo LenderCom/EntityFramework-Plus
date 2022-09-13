@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <metadata>
-    <id>$id$</id>
+    <id>Interfirt.Z.EntityFramework.Plus.EFCore</id>
     <version>$version$</version>
     <title>$title$</title>
     <authors>$authors$</authors>
