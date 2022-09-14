@@ -1,0 +1,21 @@
+trigger:
+   branches:
+     include:
+       - master
+
+pr: none
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+  project: $(System.DefaultWorkingDirectory)\src\Z.EntityFramework.Plus.EFCore3x.NETStandard21\Z.EntityFramework.Plus.EFCore3x.NETStandard21.csproj
+
+steps:
+- task: NuGetAuthenticate@1
+  displayName: Auth NuGet packages
+
+- script: dotnet build src\Z.EntityFramework.Plus.EFCore3x.NETStandard21\Z.EntityFramework.Plus.EFCore3x.NETStandard21.csproj -c Release
+- script: nuget pack src\Z.EntityFramework.Plus.EFCore3x.NETStandard21\Z.EntityFramework.Plus.EFCore3x.NETStandard21.csproj -Properties Configuration=Release
+
+- script: nuget push *.nupkg -Source "https://pkgs.dev.azure.com/Interfirst-DevOps/SkyNet/_packaging/NuGet-feed/nuget/v3/index.json" -ApiKey AZ -SkipDuplicate

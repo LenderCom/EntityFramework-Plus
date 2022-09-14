@@ -13,11 +13,14 @@
     <RootNamespace>Z.EntityFramework.Plus.EFCore.NETStandard21</RootNamespace>
     <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>zzzproject.pfx</AssemblyOriginatorKeyFile>
-    <PackageId>Z.EntityFramework.Plus.EFCore</PackageId>
-    <Version>3.0.40</Version>
+    <PackageId>Interfirt.Skynet.Z.EntityFramework.Plus.EFCore</PackageId>
+    <Version>39.0.0</Version>
     <Authors>Z.EntityFramework.Plus.EFCore</Authors>
     <Company>Z.EntityFramework.Plus.EFCore</Company>
     <Product>Z.EntityFramework.Plus.EFCore</Product>
+    <RepositoryUrl>https://github.com/Interfirst/EntityFramework-Plus.git</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/Interfirst/EntityFramework-Plus.git</PackageProjectUrl>
+    <PackageReleaseNotes>Version 3.0.40</PackageReleaseNotes>
     <Description>Description: EF Bulk Operations &amp; Utilities | Bulk Insert, Update, Delete, Merge from database.</Description>
   </PropertyGroup>
 
