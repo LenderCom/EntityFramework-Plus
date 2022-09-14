@@ -1,8 +1,3 @@
-# ASP.NET Core (.NET Framework)
-# Build and test ASP.NET Core projects targeting the full .NET Framework.
-# Add steps that publish symbols, save build artifacts, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
-
 trigger:
    branches:
      include:
@@ -14,47 +9,13 @@ pool:
   vmImage: 'windows-latest'
 
 variables:
-  solution: '**/*.sln'
-  buildPlatform: 'Any CPU'
-  buildConfiguration: 'Release'
+  project: $(System.DefaultWorkingDirectory)\src\Z.EntityFramework.Plus.EFCore3x.NETStandard21\Z.EntityFramework.Plus.EFCore3x.NETStandard21.csproj
 
 steps:
-- task: UseDotNet@2
-  inputs:
-    packageType: 'sdk'
-    version: '6.0.300'
+- task: NuGetAuthenticate@1
+  displayName: Auth NuGet packages
 
-- task: NuGetToolInstaller@1
-  inputs:
-    versionSpec: '6.2'
+- script: dotnet build src\Z.EntityFramework.Plus.EFCore3x.NETStandard21\Z.EntityFramework.Plus.EFCore3x.NETStandard21.csproj -c Release
+- script: nuget pack src\Z.EntityFramework.Plus.EFCore3x.NETStandard21\Z.EntityFramework.Plus.EFCore3x.NETStandard21.csproj -Properties Configuration=Release
 
-- task: NuGetCommand@2
-  inputs:
-    command: 'restore'
-    restoreSolution: '$(solution)'
-    feedsToUse: 'select'
-    vstsFeed: 'ec67a686-9dcc-441d-a2a0-3cc4609082d2/29ea7013-afb3-4e94-b723-2773c5ed7365'
-
-- task: VSBuild@1
-  inputs:
-    solution: '$(solution)'
-    msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DesktopBuildPackageLocation="$(build.artifactStagingDirectory)\WebApp.zip" /p:DeployIisAppPath="Default Web Site"'
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
-
-- task: NuGetCommand@2
-  inputs:
-    command: 'pack'
-    packagesToPack: 'src/Z.EntityFramework.Plus.EFCore3x.NETStandard21/Z.EntityFramework.Plus.EFCore3x.NETStandard21.csproj'
-    versioningScheme: 'off'
-    includeReferencedProjects: true
-
- 
-
-- task: NuGetCommand@2
-  inputs:
-    command: 'push'
-    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
-    nuGetFeedType: 'internal'
-    publishVstsFeed: 'ec67a686-9dcc-441d-a2a0-3cc4609082d2/29ea7013-afb3-4e94-b723-2773c5ed7365'
-    allowPackageConflicts: true
+- script: nuget push *.nupkg -Source "https://pkgs.dev.azure.com/Interfirst-DevOps/SkyNet/_packaging/NuGet-feed/nuget/v3/index.json" -ApiKey AZ -SkipDuplicate

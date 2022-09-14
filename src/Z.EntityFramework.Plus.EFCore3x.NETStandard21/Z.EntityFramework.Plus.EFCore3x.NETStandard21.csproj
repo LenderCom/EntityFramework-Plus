@@ -13,7 +13,7 @@
     <RootNamespace>Z.EntityFramework.Plus.EFCore.NETStandard21</RootNamespace>
     <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>zzzproject.pfx</AssemblyOriginatorKeyFile>
-    <PackageId>Interfirt.Z.EntityFramework.Plus.EFCore</PackageId>
+    <PackageId>Interfirt.Skynet.Z.EntityFramework.Plus.EFCore</PackageId>
     <Version>3.0.40</Version>
     <Authors>Z.EntityFramework.Plus.EFCore</Authors>
     <Company>Z.EntityFramework.Plus.EFCore</Company>
