@@ -25,6 +25,7 @@ using System.Data.Entity.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Internal;
 using System.Threading;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 #endif
 
 namespace Z.EntityFramework.Plus
@@ -132,7 +133,13 @@ namespace Z.EntityFramework.Plus
                 context = OriginalQueryable.GetDbContext();
             }
 
-            var keyNames = context.Model.FindEntityType(typeof(T).DisplayName(true))
+            var displayName =
+#if NET6
+                typeof(T).ShortDisplayName();
+#else
+                        typeof (T).DisplayName(true);
+#endif
+            var keyNames = context.Model.FindEntityType(displayName)
                 .GetKeys().ToList()[0]
                 .Properties.Select(x => x.Name).ToArray();
 #endif

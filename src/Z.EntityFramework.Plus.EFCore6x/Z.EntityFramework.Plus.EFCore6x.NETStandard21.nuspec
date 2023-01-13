@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <metadata>
+    <id>Interfirt.Skynet.Z.EntityFramework.Plus.EFCoreV6</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$authors$</authors>
+    <owners>$authors$</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <projectUrl>$packageprojecturl$</projectUrl>
+    <iconUrl>http://icon_url_here_or_delete_this_line/</iconUrl>
+    <description>description</description>
+    <releaseNotes>$packagereleasenotes$</releaseNotes>
+    <copyright>Copyright 2022</copyright>
+    <dependencies>
+      <group targetFramework="net6.0">
+        <dependency id="Microsoft.CSharp" version="4.7.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.EntityFrameworkCore" version="6.0.3" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.EntityFrameworkCore.Relational" version="6.0.3" exclude="Build,Analyzers" />
+        <dependency id="System.Reflection.Emit" version="4.7.0" exclude="Build,Analyzers" />
+        <dependency id="System.Reflection.TypeExtensions" version="4.7.0" exclude="Build,Analyzers" />
+        <dependency id="Z.EntityFramework.Extensions.EFCore" version="6.13.16" exclude="Build,Analyzers" />
+        <dependency id="Z.Expressions.Eval" version="4.0.78" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>
