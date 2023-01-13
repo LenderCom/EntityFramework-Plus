@@ -29,6 +29,7 @@ using System.Linq;
 #endif
 #if EFCORE
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 #endif
 
 #if EFCORE_3X
@@ -215,9 +216,15 @@ namespace Z.EntityFramework.Plus
 	                else
 	                { 
 		                context = currentQuery.OriginalQueryable.GetDbContext();
-	                } 
+	                }
 
-					var keyNames = context.Model.FindEntityType(typeof (TResult).DisplayName(true))
+                    var displayName =
+#if NET6
+                        typeof(TResult).ShortDisplayName();
+#else
+                        typeof (TResult).DisplayName(true);
+#endif
+                    var keyNames = context.Model.FindEntityType(displayName)
 	                    .GetKeys().ToList()[0]
 	                    .Properties.Select(x => x.Name).ToArray();
 #endif
@@ -257,9 +264,15 @@ namespace Z.EntityFramework.Plus
                 else
                 { 
 	                context = currentQuery.OriginalQueryable.GetDbContext();
-                }  
+                }
 
-                var keyNames = context.Model.FindEntityType(typeof (TResult).DisplayName(true))
+                    var displayName =
+#if NET6
+                        typeof(TResult).ShortDisplayName();
+#else
+                        typeof (TResult).DisplayName(true);
+#endif
+                    var keyNames = context.Model.FindEntityType(displayName)
                     .GetKeys().ToList()[0]
                     .Properties.Select(x => x.Name).ToArray();
 #endif
