@@ -18,4 +18,4 @@ steps:
 - script: dotnet pack src\Z.EntityFramework.Plus.EFCore3x.NETStandard21\Z.EntityFramework.Plus.EFCore3x.NETStandard21.csproj --configuration Release --output nupkgs
 - script: dotnet pack src\Z.EntityFramework.Plus.EFCore6x\Z.EntityFramework.Plus.EFCore6x.csproj --configuration Release --output nupkgs
 
-- script: nuget push *.nupkg -Source "https://pkgs.dev.azure.com/LenderDevOps/SkyNet/_packaging/NuGet-feed/nuget/v3/index.json" -ApiKey AZ -SkipDuplicate
+- script: nuget push *.nupkgs -Source "https://pkgs.dev.azure.com/LenderDevOps/SkyNet/_packaging/NuGet-feed/nuget/v3/index.json" -ApiKey AZ -SkipDuplicate
