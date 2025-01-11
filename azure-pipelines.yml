@@ -15,9 +15,9 @@ steps:
 - task: NuGetAuthenticate@1
   displayName: Auth NuGet packages
 
-- script: dotnet pack src\Z.EntityFramework.Plus.EFCore3x.NETStandard21\Z.EntityFramework.Plus.EFCore3x.NETStandard21.csproj --configuration Release --output nupkgs
+- script: dotnet pack src/Z.EntityFramework.Plus.EFCore3x.NETStandard21/Z.EntityFramework.Plus.EFCore3x.NETStandard21.csproj --configuration Release --output nupkgs
   displayName: Create Z.EntityFramework.Plus.EFCore3x.NETStandard21 nuget package
-- script: dotnet pack src\Z.EntityFramework.Plus.EFCore6x\Z.EntityFramework.Plus.EFCore6x.csproj --configuration Release --output nupkgs
+- script: dotnet pack src/Z.EntityFramework.Plus.EFCore6x/Z.EntityFramework.Plus.EFCore6x.csproj --configuration Release --output nupkgs
   displayName: Create Z.EntityFramework.Plus.EFCore6x nuget package
 
 - script: nuget push "nupkgs/*.nupkg" -Source "$(NugetFeedUrl)" -ApiKey AZ -SkipDuplicate
