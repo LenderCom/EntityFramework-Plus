@@ -20,5 +20,5 @@ steps:
 - script: dotnet pack src/Z.EntityFramework.Plus.EFCore6x/Z.EntityFramework.Plus.EFCore6x.csproj --configuration Release --output nupkgs
   displayName: Create Z.EntityFramework.Plus.EFCore6x nuget package
 
-- script: nuget push "nupkgs/*.nupkg" -Source "$(NugetFeedUrl)" -ApiKey AZ -SkipDuplicate
+- script: dotnet nuget push "nupkgs/*.nupkg" --source "$(NugetFeedUrl)" --api-key AZ --skip-duplicate
   displayName: Push nuget packages to the feed
